@@ -28,11 +28,24 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
 /**
 * struct help - argument for the current opcode
-* @d_struct: stack mode, stack (default) and queue
-* @arg: the argument(s) of the string
+* @data_struct: stack and queue
+* @arg: arguments
 *
-* Description: global structure used to pass data around the functions easily
+* Description: global data structure 
 */
+typedef struct help
+{
+	int data_struct;
+	char *arg;
+} help;
+help global;
 
+
+
+stack_t *stack_node(stack_t **stack, const int n);
+stack_t *queue_node(stack_t **stack, const int n);
+void free_stack(stack_t *stack);
+size_t print_stack(const stack_t *stack);
