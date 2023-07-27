@@ -39,7 +39,7 @@ typedef struct instruction_s
 typedef struct help
 {
 	int data_struct;
-	char *arg;
+	char *args;
 } help;
 help global;
 
@@ -49,3 +49,14 @@ stack_t *stack_node(stack_t **stack, const int n);
 stack_t *queue_node(stack_t **stack, const int n);
 void free_stack(stack_t *stack);
 size_t print_stack(const stack_t *stack);
+
+
+
+void push(stack_t **stack, unsigned int count);
+void pall(stack_t **stack, unsigned int count);
+void pint(stack_t **stack, unsigned int count);
+
+
+
+
+int int_digit(char *str);
