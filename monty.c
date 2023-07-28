@@ -82,4 +82,3 @@ void free_st(stack_t *stack)
 		}
 	}
 }
-
