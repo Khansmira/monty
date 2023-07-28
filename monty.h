@@ -63,7 +63,8 @@ void op_sub(stack_t **stack, unsigned int count);
 void op_div(stack_t **stack, unsigned int count);
 void mul(stack_t **stack, unsigned int count);
 void mod(stack_t **stack, unsigned int count);
-
+void pchar(stack_t **stack, unsigned int count);
+void pstr(stack_t **stack, unsigned int count);
 
 void opcode(stack_t **stack, char *str, unsigned int count);
 
