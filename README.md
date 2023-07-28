@@ -1,1 +1,1 @@
-ALX SE Foundations project on Stacks and Queues lIFO FIFO
+ALX SE Foundations project on Stacks and Queues: LIFO and FIFO
