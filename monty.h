@@ -74,3 +74,5 @@ void opcode(stack_t **stack, char *str, unsigned int count);
 
 
 int int_digit(char *str);
+int is_num(char *str);
+int the_comment(char *str, int count);
