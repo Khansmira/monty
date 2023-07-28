@@ -57,7 +57,13 @@ void pall(stack_t **stack, unsigned int count);
 void pint(stack_t **stack, unsigned int count);
 void pop(stack_t **stack, unsigned int count);
 void swap(stack_t **stack, unsigned int count);
+void op_add(stack_t **stack, unsigned int count);
+void nop(stack_t **stack, unsigned int count);
+void op_sub(stack_t **stack, unsigned int count);
+void op_div(stack_t **stack, unsigned int count);
 
+
+void opcode(stack_t **stack, char *str, unsigned int count);
 
 
 

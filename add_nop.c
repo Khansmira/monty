@@ -3,13 +3,13 @@
 #include "monty.h"
 
 /**
- * to_add -  adds the top two nodes of the stack
+ * op_add -  adds the top two nodes of the stack
  * @stack: stack double pointer
  * @count: line number of opcode
  *
  * Return: void
  */
-void _add(stack_t **stack, unsigned int count)
+void op_add(stack_t **stack, unsigned int count)
 {
 	int s;
 
