@@ -7,7 +7,7 @@
  *
  * Return: void
  */
-void opcode(stack_t **stack, char *str, unsigned int count)
+void opcode(stack_t **stack, unsigned int count, char *opcode)
 {
 	int i = 0;
 

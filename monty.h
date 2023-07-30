@@ -30,7 +30,7 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int count);
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 
@@ -74,7 +74,7 @@ void rotl(stack_t **stack, unsigned int count);
 void rotr(stack_t **stack, unsigned int count);
 
 
-void opcode(stack_t **stack, char *str, unsigned int count);
+void opcode(stack_t **stack, char *str, unsigned int count, char *opcode);
 
 
 
