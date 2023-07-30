@@ -39,16 +39,16 @@ void op_div(stack_t **stack, unsigned int count)
 
 	if (!stack || !*stack || !((*stack)->next))
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", count);
+		fprintf(stderr, "L%u: can't div, stack too short\n", count);
 		exit(EXIT_FAILURE);
 	}
 	if (((*stack)->n) == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", count;
+		fprintf(stderr, "L%d: division by zero\n", count);
 		exit(EXIT_FAILURE);
-		;
-		return;
 	}
+		
+		return;
 
 	s = ((*stack)->next->n) / ((*stack)->n);
 	pop(stack, count);

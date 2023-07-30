@@ -60,7 +60,7 @@ void pint(stack_t **stack, unsigned int count)
 {
 	if (!stack || !(*stack))
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_cnt);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", count);
 		exit(EXIT_FAILURE);
 
 	}

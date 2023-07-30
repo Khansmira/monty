@@ -1,15 +1,15 @@
 #include "monty.h"
 
 /**
- * opcodes - selects the correct opcode to perform
+ * opcode - selects the correct opcode to perform
  * @stack: stack double pointer
  * @count: line number
  *
  * Return: void
  */
-void opcodes(stack_t **stack, char *str, unsigned int count)
+void opcode(stack_t **stack, char *str, unsigned int count)
 {
-	int i = 0
+	int i = 0;
 
 	instruction_t instruct[] = {
 		{"push", push},
@@ -30,12 +30,12 @@ void opcodes(stack_t **stack, char *str, unsigned int count)
 		{NULL, NULL}
 	};
 
-	if (!strcmp(str, "stack"))
+	if (!_strcmp(str, "stack"))
 	{
 		global.data_struct = 1;
 		return;
 	}
-	if (!strcmp(str, "queue"))
+	if (!_strcmp(str, "queue"))
 	{
 		global.data_struct = 0;
 		return;
@@ -43,7 +43,7 @@ void opcodes(stack_t **stack, char *str, unsigned int count)
 
 	while (instruct[i].opcode)
 	{
-		if (strcmp(instruct[i].opcode, str) == 0)
+		if (_strcmp(instruct[i].opcode, str) == 0)
 		{
 			instruct[i].f(stack, count);
 			return;

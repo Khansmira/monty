@@ -1,9 +1,14 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <stddef.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <ctype.h>
+#include <stddef.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -76,3 +81,5 @@ void opcode(stack_t **stack, char *str, unsigned int count);
 int int_digit(char *str);
 int is_num(char *str);
 int the_comment(char *str, int count);
+int _strcmp(char *s1, char *s2);
+#endif

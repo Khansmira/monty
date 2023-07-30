@@ -39,7 +39,7 @@ void pstr(stack_t **stack, unsigned int count __attribute__((unused)))
 
 	while (s)
 	{
-		if (s->n <= 0 || c->n > 127)
+		if (s->n <= 0 || s->n > 127)
 			break;
 		putchar((char) s->n);
 		s->next = s;

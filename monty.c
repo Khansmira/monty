@@ -1,5 +1,7 @@
-#include <string.h>
+#define  _POSIX_C_SOURCE 200809L
 #include "monty.h"
+#include <string.h>
+#include <stdio.h>
 
 /**
  * main - entry point
@@ -10,11 +12,11 @@
  */
 int main(int argc, char **argv)
 {
+	FILE *file;
 	char *buffer = NULL;
         char *str = NULL;
         stack_t *stack = NULL;
-        unsigned int count = 1
-	FILE *file;
+        unsigned int c = 1;
 	size_t len = 0;
 	int stat = 0;
 
@@ -29,28 +31,27 @@ int main(int argc, char **argv)
 
 	if (!file)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
 	}
-
 	while ((getline(&buffer, &len, file)) != (-1))
 	{
 		if (stat)
 			break;
 		if (*buffer == '\n')
 		{
-			count++;
+			c++;
 			continue;
 		}
 		str = strtok(buffer, " \t\n");
 		if (!str || *str == '#')
 		{
-			count++;
+			c++;
 			continue;
 		}
 		global.args = strtok(NULL, " \t\n");
-		opcode(&stack, str, count);
-		count++;
+		opcode(&stack, str, c);
+		c++;
 	}
 	free(buffer);
 	free_stack(stack);
@@ -65,7 +66,7 @@ int main(int argc, char **argv)
  *
  * Return: void
  */
-void free_st(stack_t *stack)
+void free_stack(stack_t *stack)
 {
 	stack_t *current = stack;
 	stack_t *next;
@@ -82,3 +83,4 @@ void free_st(stack_t *stack)
 		}
 	}
 }
+
