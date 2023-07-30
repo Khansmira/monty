@@ -77,7 +77,7 @@ void rotl(stack_t **stack, unsigned int count);
 void rotr(stack_t **stack, unsigned int count);
 
 
-void opcode(stack_t **stack, char *str, unsigned int count, char *opcode);
+void opcode(stack_t **stack, char *str, unsigned int count);
 
 
 
