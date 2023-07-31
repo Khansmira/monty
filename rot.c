@@ -7,25 +7,20 @@
 *
 * Return: void
 */
-void rotl(stack_t **stack, unsigned int count)
+void rotl(stack_t **stack, unsigned int count __attribute__((unused)))
 {
-	stack_t *a;
-	stack_t *b;
+	int tmp;
+	stack_t *ptr = *stack;
 
-	(void) count;
-	if (!stack || !*stack || !(*stack)->next)
+	if (*stack == NULL)
 		return;
-
-	a = b = *stack;
-
-	while (a->next != NULL)
-		a = a->next;
-
-	b->next = b;
-	a->prev = b;
-	*stack = a->next;
-	(*stack)->prev->next = NULL;
-	(*stack)->prev = NULL;
+	tmp = (*stack)->n;
+	while (ptr->next != NULL)
+	{
+		ptr->n = ptr->next->n;
+		ptr = ptr->next;
+	}
+	ptr->n = tmp;
 }
 
 
@@ -37,24 +32,21 @@ void rotl(stack_t **stack, unsigned int count)
 *
 * Return: void
 */
-void rotr(stack_t **stack, unsigned int count)
+void rotr(stack_t **stack, unsigned int count __attribute__((unused)))
 {
-	stack_t *lt;
-	stack_t *rt;
+	int tmp;
+	stack_t *ptr = *stack;
 
-	(void) count;
-	if (!stack || !*stack || !(*stack)->next)
+	if (*stack == NULL)
 		return;
 
-	lt = *stack;
-
-	while (lt->next != NULL)
-		lt = lt->next;
-
-	rt = lt->prev;
-	lt->next = *stack;
-	(*stack)->prev = lt;
-	*stack = lt;
-	(*stack)->prev = NULL;
-        rt->next = NULL;
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+	tmp = ptr->n;
+	while (ptr->prev != NULL)
+	{
+		ptr->n = ptr->prev->n;
+		ptr = ptr->prev;
+	}
+	ptr->n = tmp;
 }

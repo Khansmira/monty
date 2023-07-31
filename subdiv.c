@@ -12,17 +12,20 @@
  */
 void op_sub(stack_t **stack, unsigned int count)
 {
-	int s;
+	int a, b;
 
-	if (!stack || !*stack || !((*stack)->next))
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", count);
+		exit_free(*stack);
 		exit(EXIT_FAILURE);
 	}
-
-	s = ((*stack)->next->n) - ((*stack)->n);
-	pop(stack, count);
-	(*stack)->n = s;
+	a = (*stack)->n;
+	b = (*stack)->next->n;
+	*stack = (*stack)->next;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+	(*stack)->n = b - a;
 }
 
 /**
@@ -35,22 +38,24 @@ void op_sub(stack_t **stack, unsigned int count)
  */
 void op_div(stack_t **stack, unsigned int count)
 {
-	int s;
+	int a, b;
 
-	if (!stack || !*stack || !((*stack)->next))
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't div, stack too short\n", count);
+		fprintf(stderr, "L%d: can't div, stack too short\n", count);
+		exit_free(*stack);
 		exit(EXIT_FAILURE);
 	}
-	if (((*stack)->n) == 0)
+	a = (*stack)->n;
+	if (a == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", count);
+		exit_free(*stack);
 		exit(EXIT_FAILURE);
 	}
-		
-		return;
-
-	s = ((*stack)->next->n) / ((*stack)->n);
-	pop(stack, count);
-	(*stack)->n = s;
+	b = (*stack)->next->n;
+	*stack = (*stack)->next;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+	(*stack)->n = b / a;
 }
