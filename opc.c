@@ -3,7 +3,7 @@
 /**
  * opc - selects the correct opcode to perform
  * @stack: stack double pointer
- * @count: line number
+ * @line_number: line number of opcode selected
  * @opcode: the string from getline
  *
  * Return: void

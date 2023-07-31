@@ -32,7 +32,7 @@ void op_sub(stack_t **stack, unsigned int count)
  * op_div - divides thsecond element by the
  * top element of the stack
  * @stack: stack double pointer
- * @count: line number 
+ * @count: line number
  *
  * Return: void
  */
