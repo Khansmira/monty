@@ -1,13 +1,14 @@
 #include "monty.h"
-
+#include <string.h>
 /**
- * opcode - selects the correct opcode to perform
+ * opc - selects the correct opcode to perform
  * @stack: stack double pointer
  * @count: line number
+ * @opcode: the string from getline
  *
  * Return: void
  */
-void opcode(stack_t **stack, unsigned int count, char *opcode)
+void opc(stack_t **stack,  unsigned int line_number, char *opcode)
 {
 	int i = 0;
 
@@ -29,27 +30,18 @@ void opcode(stack_t **stack, unsigned int count, char *opcode)
 		{"rotr", rotr},
 		{NULL, NULL}
 	};
-
-	if (!_strcmp(str, "stack"))
+	while (instruct[i].opcode != NULL)
 	{
-		global.data_struct = 1;
-		return;
-	}
-	if (!_strcmp(str, "queue"))
-	{
-		global.data_struct = 0;
-		return;
-	}
-
-	while (instruct[i].opcode)
-	{
-		if (_strcmp(instruct[i].opcode, str) == 0)
+		if (strcmp(opcode, instruct[i].opcode) == 0)
 		{
-			instruct[i].f(stack, count);
+			instruct[i].f(stack, line_number);
 			return;
 		}
 		i++;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", count, str);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+	exit_free(*stack);
 	exit(EXIT_FAILURE);
 }
+
+

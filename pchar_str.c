@@ -10,17 +10,17 @@
  */
 void pchar(stack_t **stack, unsigned int count)
 {
-	if (!stack || !(*stack))
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", count);
+		exit_free(*stack);
 		exit(EXIT_FAILURE);
-		return;
 	}
-	if (((*stack)->n) > 127 || ((*stack)->n) < 0)
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", count);
+		exit_free(*stack);
 		exit(EXIT_FAILURE);
-		return;
 	}
 	printf("%c\n", (*stack)->n);
 }
@@ -35,17 +35,15 @@ void pchar(stack_t **stack, unsigned int count)
  */
 void pstr(stack_t **stack, unsigned int count __attribute__((unused)))
 {
-	stack_t *s = *stack;
+	stack_t *tmp;
 
-	while (s)
+	tmp = *stack;
+	while (tmp != NULL)
 	{
-		if (s->n <= 0 || s->n > 127)
+		if (tmp->n <= 0 || tmp->n > 127)
 			break;
-		putchar((char) s->n);
-		s->next = s;
-		s = s->next;
+		printf("%c", tmp->n);
+		tmp = tmp->next;
 	}
-	putchar('\n');
+	printf("\n");
 }
-
-
