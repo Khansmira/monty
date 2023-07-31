@@ -11,17 +11,20 @@
  */
 void op_add(stack_t **stack, unsigned int count)
 {
-	int s;
+	int a, b;
 
-	if (!stack || !*stack || !((*stack)->next))
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", count);
+		exit_free(*stack);
 		exit(EXIT_FAILURE);
 	}
-
-	s = ((*stack)->next->n) + ((*stack)->n);
-	(*stack)->n = s;
-	pop(stack, count);
+	a = (*stack)->n;
+	b = (*stack)->next->n;
+	*stack = (*stack)->next;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+	(*stack)->n = a + b;
 }
 
 /**
