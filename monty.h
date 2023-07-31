@@ -11,7 +11,6 @@
 #include <stddef.h>
 
 
-int main(int argc, char **argv)
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,25 +37,18 @@ typedef struct instruction_s
 
 
 /**
-* struct help - argument for the current opcode
-* @data_struct: stack and queue
-* @arg: arguments
-*
-* Description: global data structure 
-*/
-typedef struct help
+ * struct GlobalStruct - contains all globals
+ * @data: int for push
+ * @fm: file stream for monty file
+ * @lineptr: pointer to char sting allocated by getline function
+ */
+struct GlobalStruct
 {
-	int data_struct;
-	char *args;
-} help;
-help global;
+	int data;
+	FILE *fm;
+	char *lineptr;
+} globes;
 
-
-
-stack_t *stack_node(stack_t **stack, const int n);
-stack_t *queue_node(stack_t **stack, const int n);
-void free_stack(stack_t *stack);
-size_t print_stack(const stack_t *stack);
 
 
 
@@ -77,12 +69,11 @@ void rotl(stack_t **stack, unsigned int count);
 void rotr(stack_t **stack, unsigned int count);
 
 
-void opcode(stack_t **stack, char *str, unsigned int count);
+void opc(stack_t **stack, unsigned int line_number, char *opcode);
 
 
+int _iswhitespace(void);
+void exit_free(stack_t *stack);
+void free_stack(stack_t *stack);
 
-int int_digit(char *str);
-int is_num(char *str);
-int the_comment(char *str, int count);
-int _strcmp(char *s1, char *s2);
 #endif
